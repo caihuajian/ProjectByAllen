@@ -1,0 +1,34 @@
+<!--index.wxml-->
+
+<view  class="userinfo">
+  <block wx:for="{{cpArray}}">
+  <view class="itemstyle">
+   <view>
+      <image src="{{item.img}}"                                       mode="aspectFit">
+      </image>
+   </view> 
+
+ <view class="">
+      <view>
+   <text style="font-size:25rpx;">{{item.cpName}}</text>
+   <text style="font-size:25rpx;margin-left:30rpx">{{item.openIssue}}</text>
+   <text style="font-size:25rpx;margin-left:30rpx">{{item.openTime}}</text>
+   </view>
+ <view class="">
+ <block wx:for="{{item.onpenNum}}" wx:for-item="num">
+   <text style="font-size:20rpx;margin-left:20rpx">{{num}}</text>
+ 
+ </block>
+ 
+ </view>
+ 
+ </view>
+
+ <view class="endstyle">
+ <text> ></text> 
+ </view>
+  
+  </view>
+  </block>
+</view>
+
