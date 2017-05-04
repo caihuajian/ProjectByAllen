@@ -16,3 +16,4 @@ exports.reg = function(req,res,next){
 exprots.login = function(req,res,next){
 	
 }
+

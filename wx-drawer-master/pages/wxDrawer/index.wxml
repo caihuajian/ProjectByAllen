@@ -1,0 +1,82 @@
+<view 
+    class="mpage {{!ui.tStart? 'withAnimate': ''}}" 
+    style="left:{{ui.offsetLeft}}px;width: {{ui.windowWidth}}px" 
+    bindtouchstart="handlerStart" 
+    catchtouchmove="handlerMove" 
+    bindtouchcancel="handlerCancel" 
+    bindtouchend="handlerEnd" 
+    bindtap="handlerPageTap"
+    >
+  <scroll-view bindscroll="handlerScroll" scroll-y style="height: 90%;">
+    <view class="search">
+      <view catchtap="handlerAvatarTap" class="top">
+        <image src="../../imgs/topBarList.png" class="avatar"></image>
+        <image src="../../imgs/bj28.png" class="cpicon"></image>
+        <view class="cptitle">
+            <text style=" font-size: 10px;">第2017-0115072期 投注截止</text>
+            <text style=" font-size: 20px;"> 00: 04 : 31</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="openNum">
+     <text style=" font-size: 10px;color:white">第2017-0115072期 开奖号码</text>  
+    </view>
+      <view class="numItem">
+        <block wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}" wx:key="unique" wx:for-index ="idx" >
+
+        <view wx:if="{{idx ==8}}"  class="blueball">
+        <text>{{item}}</text>
+        </view>
+          <view wx:elif="{{idx ==9}}"  class="blueball">
+              <text>{{item}}</text>
+        </view>
+          <view wx:else  class="ball">
+             <text>{{item}}</text>
+        </view> 
+        </block>
+     </view>
+   <view class="historycontainer">
+        <block wx:for="{{cp_data.cp_history}}" wx:key="unique" >
+           
+      <view class="historyitem">
+          <text class="lefttxt">{{item.cpissue}}</text>
+          <block wx:for="{{item.cpNum}}" wx:key="unique" wx:for-index ="idx" wx:for-item="num">
+              <view wx:if="{{idx ==8}}" class="rigthredtxt">
+              <text >{{num}}</text>
+              </view>
+                <view wx:elif="{{idx ==9}}" class="rigthredtxt">
+                    <text>{{num}}</text>
+              </view>
+                <view wx:else class="rigthtxt">
+                  <text>{{num}}</text>
+              </view> 
+          </block>
+            </view>
+        </block>
+     </view>
+ 
+  </scroll-view>
+
+  <view class="bottom">
+   <image src="../../imgs/backspace.png" class="avatar"></image>
+  </view>
+</view>
+<view 
+    bindtouchstart="handlerStart" 
+    catchtouchmove="handlerMove" 
+    bindtouchcancel="handlerCancel" 
+    bindtouchend="handlerEnd" 
+    class="user"
+    style="width: {{ui.menuWidth}}px"
+    >
+   <view 
+   style="width: {{ui.menuWidth}}px;left:{{-ui.menuWidth/3 + ui.offsetLeft/3}}px" 
+   class="user-box {{!ui.tStart? 'withAnimate': ''}}"
+   >
+    
+     <view wx:for="{{cp_data.cp_category}}" wx:key="unique" class="one-menu" bindtap="clickItem">
+        <text >{{item.name}}</text>
+     </view>
+   </view>
+</view>
