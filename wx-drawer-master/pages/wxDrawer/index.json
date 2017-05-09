@@ -1,3 +1,8 @@
 {
-    
+ "navigationBarBackgroundColor":"black" ,
+ "navigationBarTextStyle":"white",
+ "navigationBarTitleText":"0080彩票",
+ "backgroundColor":"#000000",
+ "backgroundTextStyle":"dark",
+ "enablePullDownRefresh":"true"
 }
