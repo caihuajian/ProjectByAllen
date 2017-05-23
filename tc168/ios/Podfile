@@ -1,0 +1,16 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'TC168' do
+platform :ios, '8.0'
+pod 'UMengAnalytics-NO-IDFA'
+pod 'UMengUShare/Social/WeChat'
+pod 'UMengUShare/Social/SMS'
+pod 'UMengUShare/UI’
+pod 'JSPatchPlatform'
+
+pod 'React', path: '../node_modules/react-native', subspecs: [
+'ART',
+]
+
+end

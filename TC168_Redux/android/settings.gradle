@@ -1,0 +1,3 @@
+rootProject.name = 'TC168_Redux'
+
+include ':app'

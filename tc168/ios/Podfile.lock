@@ -1,0 +1,34 @@
+PODS:
+  - React/ART (0.37.0):
+    - React/Core
+  - React/Core (0.37.0)
+  - UMengAnalytics-NO-IDFA (4.1.9)
+  - UMengUShare/Core (6.1.1):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.1.1)
+  - UMengUShare/Social/SMS (6.1.1):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.1.1):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.1.1):
+    - UMengUShare/Core
+
+DEPENDENCIES:
+  - React/ART (from `../node_modules/react-native`)
+  - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/SMS
+  - UMengUShare/Social/WeChat
+  - UMengUShare/UI
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+
+SPEC CHECKSUMS:
+  React: aa8f585cbea131b6781c6ad7a1aee436e1ac5ddf
+  UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
+  UMengUShare: 0a80f54ee06f71f3de7c57764c36339e8bf9b7e7
+
+PODFILE CHECKSUM: a59cd84f701d94cf56ced035389275ddd4782f58
+
+COCOAPODS: 1.0.1
