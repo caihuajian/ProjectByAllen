@@ -13,19 +13,7 @@ class ExpandableList2 extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        let map = new Map();
-        if (props.dataSource && props.isOpen) {
-            props.dataSource.map((item, i) => map.set(i.toString(), true))
-        } else {
-            props.dataSource.map((item, i) => map.set(i.toString(), false))
-        }
-
-        if (props.openOptions) {
-            props.openOptions.map((item) => map.set(item.toString(), true))
-        }
-        this.state = {
-            memberOpened: map
-        }
+        this.initData()
     }
 
     static propTypes = {
@@ -38,31 +26,50 @@ class ExpandableList2 extends Component {
         headerOnPress: PropTypes.func,
         isOpen: PropTypes.bool,
         openOptions: PropTypes.array,
+        onlyOpenOne: PropTypes.bool,
+        defaultOpen: PropTypes.string
     };
 
     static defaultProps = {
         headerKey: 'header',
         memberKey: 'member',
         isOpen: false,
+        onlyOpenOne: false
     };
+
+
+    initData() {
+        let map = new Map();
+        if (this.props.dataSource && this.props.isOpen) {
+            this.props.dataSource.map((item, i) => map.set(i.toString(), true))
+        } else if (this.props.onlyOpenOne) {
+            this.props.dataSource.map((item, i) => {
+                if (this.props.defaultOpen && i.toString() === this.props.defaultOpen) {
+                    map.set(i.toString(), true)
+                } else {
+                    map.set(i.toString(), false)
+                }
+            })
+        } else {
+            this.props.dataSource.map((item, i) => {
+                map.set(i.toString(), false)
+            })
+        }
+        if (this.props.openOptions && !this.props.onlyOpenOne) {
+            this.props.openOptions.map((item) => map.set(item.toString(), true))
+        }
+        this.state = {
+            memberOpened: map
+        }
+    }
 
     _onPress = (i) => {
         this.setState((state) => {
             const memberOpened = new Map(state.memberOpened);
-            // memberOpened.forEach((item, index) => {
-            //     console.log('=============', index)
-            //     if (index === i) {
-            //         memberOpened.set(i, !memberOpened.get(i));
-            //     } else {
-            //         if (memberOpened.get(index)) {
-            //             memberOpened.set(index, false);
-            //         }
-            //     }
-            // })
             state.memberOpened.forEach((value, key) => {
                 if (i === key) {
                     memberOpened.set(i, !memberOpened.get(i));
-                } else {
+                } else if (this.props.onlyOpenOne) {
                     if (memberOpened.get(key)) {
                         this.scrollToTop()
                         memberOpened.set(key, false);
